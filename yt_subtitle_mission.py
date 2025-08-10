@@ -362,6 +362,10 @@ class MissionControl:
                 sys.exit(1)
             except Exception as e:
                 print(f"  -> ERROR: Failed to fetch metadata for {target['url']}: {e}")
+            
+            # Add sleep after each metadata fetch to prevent rate limiting
+            print(f"  -> Sleeping for {YT_DLP_SLEEP_INTERVAL} seconds after metadata fetch...")
+            time.sleep(YT_DLP_SLEEP_INTERVAL)
 
         print(f"\n  -> Total videos added to mission queue: {len(self.mission_queue)}")
 
