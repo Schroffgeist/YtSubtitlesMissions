@@ -44,7 +44,8 @@ def get_user_input(prompt, default=None):
 
 def run_shell_command(command_list, timeout, description="Executing command"):
     """Runs a shell command and returns its stdout, handling errors."""
-    print(f"  -> {description}: {' '.join(shlex.quote(arg) for arg in command_list)}")
+    command_str = " ".join(shlex.quote(arg) for arg in command_list)
+    print(f"  -> {description}: {command_str}")
     try:
         result = subprocess.run(
             command_list,
@@ -431,7 +432,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         '-m', '--mission-file', type=str,
-        help="Path to a pre-existing mission report CSV file to process directly (e.g., mission_report_20250810_123456.csv).\n"
+        help="Path to a pre-existing mission report CSV file to process directly (e.g., mission_report_20250810_123456.csv).\n" 
              "If provided, interactive setup is skipped and processing begins immediately."
     )
     args = parser.parse_args()
