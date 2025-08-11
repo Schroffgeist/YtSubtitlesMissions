@@ -52,8 +52,12 @@ def run_command(command, timeout):
             text=True,
             encoding='utf-8',
             timeout=timeout,
-            check=True
+            check=False  # Set to False to handle exit codes manually
         )
+        # yt-dlp exits with 101 when --break-match-filter is triggered.
+        # This is expected behavior, not an error for our use case.
+        if result.returncode != 0 and result.returncode != 101:
+            raise subprocess.CalledProcessError(result.returncode, command, output=result.stdout, stderr=result.stderr)
         return result.stdout.strip()
     except subprocess.TimeoutExpired:
         print(f"  -> ERROR: El comando excedió el tiempo límite de {timeout}s.")
@@ -77,21 +81,7 @@ def sanitize_title_for_filename(title):
     # Limit length to avoid issues with file systems
     return sanitized[:100]
 
-# --- LLM Interaction ---
 
-def get_language_from_title(title):
-    """Uses LLM to detect if a title is in Spanish or English."""
-    prompt = f"Detecta el idioma del siguiente texto. Responde solo 'es' para español o 'en' para inglés.\n\nTexto: '{title}'"
-    command = ["gemini", "-p", prompt, "-m", MODEL]
-    output = run_command(command, LLM_TIMEOUT)
-    if output:
-        # Extract the last meaningful line from the output
-        lines = output.strip().split('\n')
-        clean_lines = [line for line in lines if "Loaded cached credentials" not in line]
-        response = clean_lines[-1].strip().lower() if clean_lines else None
-        if response in ['es', 'en']:
-            return response
-    return 'es' # Default to Spanish if detection fails
 
 # --- Core Classes ---
 
@@ -116,16 +106,15 @@ class Mission:
         
         # Check for existing file using a pattern that matches the new format
         # Format: [id].(upload_date).sanitized_title.lang.cleaned.vtt
-        existing_files = list(PROCESSED_DIR.glob(f"{self.video_id}.*.cleaned.vtt"))
+        existing_files = list(PROCESSED_DIR.glob(f"*{self.video_id}*.cleaned.vtt"))
         if existing_files:
             self.status = "Éxito (Existente)"
             self.final_filename = existing_files[0]
             print(f"  -> El archivo ya existe: {self.final_filename.name}. Omitiendo.")
             return
 
-        print("1. Detectando idioma del título...")
-        self.language = get_language_from_title(self.title)
-        print(f"  -> Idioma detectado: {self.language.upper()}")
+        # Language is now pre-assigned to the mission object.
+        print(f"1. Idioma asignado: {self.language.upper()}")
 
         self.final_filename = PROCESSED_DIR / f"[{self.video_id}].({self.upload_date}).{sanitized_title}.{self.language}.cleaned.vtt"
         print(f"  -> Nombre final propuesto: {self.final_filename.name}")
@@ -141,7 +130,11 @@ class Mission:
 
     def _download_and_clean(self, sanitized_title):
         """Attempts to download subtitles and cleans them."""
-        for lang_attempt in [self.language, 'en' if self.language == 'es' else 'es']:
+        # The mission's assigned language is tried first.
+        primary_lang = self.language
+        fallback_lang = 'en' if primary_lang == 'es' else 'es'
+
+        for lang_attempt in [primary_lang, fallback_lang]:
             print(f"  -> Intentando descarga en '{lang_attempt}'...")
             
             # Temporary filename for the download
@@ -165,11 +158,13 @@ class Mission:
             
             run_command(yt_dlp_command, YT_DLP_TIMEOUT)
             
-            raw_vtt_path = PROCESSED_DIR / f"{temp_output_template}.{lang_attempt}.vtt"
+            # yt-dlp might save with a .vtt or .srv3, etc. We need to find the actual file.
+            downloaded_files = list(PROCESSED_DIR.glob(f"{temp_output_template}*"))
+            raw_vtt_path = next((p for p in downloaded_files if p.suffix in ['.vtt', '.srv3', '.srv2', '.srv1', '.ttml']), None)
 
-            if raw_vtt_path.exists():
+            if raw_vtt_path and raw_vtt_path.exists():
                 print(f"  -> Descarga exitosa: {raw_vtt_path.name}")
-                # The final filename is already determined, just rename the cleaned file
+                # The final filename should reflect the language that was successful.
                 self.final_filename = PROCESSED_DIR / f"[{self.video_id}].({self.upload_date}).{sanitized_title}.{lang_attempt}.cleaned.vtt"
                 
                 sed_awk_cmd = (
@@ -179,14 +174,35 @@ class Mission:
                 )
                 try:
                     subprocess.run(sed_awk_cmd, shell=True, check=True, timeout=60)
-                    raw_vtt_path.unlink()
-                    self.language = lang_attempt # Set language to the one that worked
+                    raw_vtt_path.unlink() # Clean up the original downloaded file
+                    self.language = lang_attempt # Update language to the one that worked
                     return True
                 except Exception as e:
                     print(f"  -> ERROR: Falló la limpieza del subtítulo: {e}")
                     if raw_vtt_path.exists(): raw_vtt_path.unlink()
-                    return False
+                    # Do not return here, allow fallback to the other language
+            else:
+                # Cleanup any other files that might have been created if the subtitle failed
+                for p in downloaded_files:
+                    p.unlink()
+
         return False
+
+# --- LLM Interaction ---
+
+def llm_call(prompt):
+    """Generic function to call the LLM."""
+    # This is a simplified version for our bulk call.
+    command = ["gemini", "-p", prompt, "-m", MODEL]
+    output = run_command(command, LLM_TIMEOUT)
+    if not output:
+        return None
+    
+    # Clean up potential headers or boilerplate from the CLI output
+    lines = output.strip().split('\n')
+    clean_lines = [line for line in lines if "Loaded cached credentials" not in line]
+    return "\n".join(clean_lines)
+
 
 class MissionControl:
     """Orchestrates the entire subtitle mission from setup to completion."""
@@ -200,12 +216,15 @@ class MissionControl:
             print_header("Inicio de la Misión de Inteligencia YT")
             PROCESSED_DIR.mkdir(exist_ok=True)
 
-            self._interactive_setup()
+            self._interactive_channel_intel_setup()
             if not self.targets:
                 print("No se definieron objetivos. Abortando misión.")
                 return
                 
-            self._adjudicate_targets()
+            self._adjudicate_targets_from_channels()
+            
+            self._bulk_detect_languages()
+
             self._process_missions()
             self._generate_report()
         except KeyboardInterrupt:
@@ -215,60 +234,115 @@ class MissionControl:
             print(f"\n\nERROR INESPERADO EN EL CONTROLADOR PRINCIPAL: {e}")
             sys.exit(1)
 
-    def _interactive_setup(self):
-        """Guides the user through selecting channels and setting date ranges."""
-        print_header("Fase 1: Creación de Manifiesto de Misión")
-        
-        source_choice = get_user_input("¿Usar 'lista_urls.txt' (1) o 'youtube_channel_list.csv' (2)?", '1')
+    def _bulk_detect_languages(self):
+        """Detects language for all missions in a single LLM call."""
+        print_header("Fase 3: Detección de Idioma en Lote")
+        if not self.missions:
+            print("No hay misiones para detectar idioma.")
+            return
 
-        if source_choice == '1':
-            url_file = Path("lista_urls.txt")
-            if not url_file.exists():
-                print(f"ERROR: No se encontró el archivo '{url_file}'.")
-                sys.exit(1)
-            urls = [line.strip() for line in url_file.read_text().splitlines() if line.strip()]
-            start_date = get_user_input("Fecha de inicio (YYYYMMDD): ")
-            end_date = get_user_input("Fecha de fin (YYYYMMDD): ", datetime.now().strftime('%Y%m%d'))
-            for url in urls:
-                self.targets.append({'name': url.split('/')[-1], 'url': url, 'start': start_date, 'end': end_date})
-        else:
-            channel_file = Path("youtube_channel_list.csv")
-            if not channel_file.exists():
-                print(f"ERROR: No se encontró el archivo '{channel_file}'.")
-                sys.exit(1)
-            with channel_file.open(newline='', encoding='utf-8') as f:
-                reader = csv.DictReader(f, skipinitialspace=True, quotechar="'")
-                for row in reader:
-                    name = row.get("Channel Name", "").strip()
-                    url = row.get("Handle / URL", "").strip()
-                    if not name or not url: continue
-                    
-                    print(f"\n--- Canal: {name} ---")
-                    if get_user_input(f"¿Incluir este canal? (s/n):", 'n') != 's': continue
-                    
-                    start_date = get_user_input(f"  > Fecha de inicio para {name} (YYYYMMDD): ")
-                    end_date = get_user_input(f"  > Fecha de fin para {name} (YYYYMMDD): ", datetime.now().strftime('%Y%m%d'))
-                    
-                    base_url = url.split(";")[0].rstrip("/")
-                    for section in ("videos", "streams"):
-                        self.targets.append({'name': name, 'url': f"{base_url}/{section}", 'start': start_date, 'end': end_date})
-                    for i in range(1, 4):
-                        pl_url = row.get(f"Playlist URL {i}", "").strip()
-                        if pl_url:
+        # Using a unique separator to avoid issues with commas in titles
+        separator = "|||"
+        # Create a payload of video IDs and titles
+        payload_lines = [m.video_id + separator + m.title.replace('\n', ' ') for m in self.missions]
+        payload = "\n".join(payload_lines)
+
+        prompt = (
+            f"Analiza el siguiente listado de videos en formato 'video_id{separator}title'.\n"
+            f"Para cada línea, detecta si el título está en español ('es') o inglés ('en').\n"
+            f"Responde únicamente con un listado en formato CSV con las columnas 'video_id,language'.\n"
+            f"No incluyas encabezados en tu respuesta. Tu respuesta debe tener exactamente {len(payload_lines)} líneas.\n\n"
+            f"LISTADO DE VIDEOS:\n{payload}"
+        )
+
+        print(f"Enviando {len(self.missions)} títulos al LLM para análisis...")
+        response_csv = llm_call(prompt)
+
+        if not response_csv:
+            print("  -> ERROR: No se recibió respuesta del LLM. Se usará 'es' por defecto para todos.")
+            return
+
+        print("  -> Respuesta recibida. Actualizando idiomas de las misiones...")
+        try:
+            # Use a dictionary for efficient lookup
+            lang_map = {row[0]: row[1] for row in csv.reader(response_csv.splitlines()) if len(row) == 2 and row[1] in ['es', 'en']}
+            
+            updated_count = 0
+            not_found_count = 0
+            for mission in self.missions:
+                if mission.video_id in lang_map:
+                    mission.language = lang_map[mission.video_id]
+                    updated_count += 1
+                else:
+                    not_found_count += 1
+            
+            print(f"  -> Se actualizaron los idiomas para {updated_count} misiones.")
+            if not_found_count > 0:
+                print(f"  -> ADVERTENCIA: No se encontró el idioma para {not_found_count} misiones. Usarán 'es' por defecto.")
+
+        except Exception as e:
+            print(f"  -> ERROR: Falló el parseo de la respuesta del LLM: {e}")
+            print("           Se usará 'es' por defecto para todos.")
+
+    def _interactive_channel_intel_setup(self):
+        """Guides the user through selecting channels from a CSV and setting date ranges."""
+        print_header("Fase 1: Creación de Manifiesto de Misión (Modo: Canal Intel)")
+        
+        channel_file = Path("youtube_channel_list.csv")
+        if not channel_file.exists():
+            print(f"ERROR: No se encontró el archivo '{channel_file}'.")
+            sys.exit(1)
+            
+        with channel_file.open(newline='', encoding='utf-8') as f:
+            reader = csv.DictReader(f, skipinitialspace=True, quotechar="'")
+            for row in reader:
+                name = row.get("Channel Name", "").strip()
+                url = row.get("Handle / URL", "").strip()
+                if not name or not url: continue
+                
+                print(f"\n--- Canal: {name} ---")
+                if get_user_input(f"¿Incluir este canal? (s/n):", 'n') != 's': continue
+                
+                start_date = get_user_input(f"  > Fecha de inicio para {name} (YYYYMMDD): ")
+                end_date = get_user_input(f"  > Fecha de fin para {name} (YYYYMMDD): ", datetime.now().strftime('%Y%m%d'))
+                
+                base_url = url.split(";")[0].rstrip("/")
+
+                # Restore interactivity for each section
+                if get_user_input(f"    ¿Escanear /{base_url.split('/')[-1]}/videos? (s/n):", 's') == 's':
+                    self.targets.append({'name': name, 'url': f"{base_url}/videos", 'start': start_date, 'end': end_date})
+                
+                if get_user_input(f"    ¿Escanear /{base_url.split('/')[-1]}/streams? (s/n):", 's') == 's':
+                    self.targets.append({'name': name, 'url': f"{base_url}/streams", 'start': start_date, 'end': end_date})
+
+                for i in range(1, 4):
+                    pl_url = row.get(f"Playlist URL {i}", "").strip()
+                    if pl_url:
+                        try:
+                            pl_name = pl_url.split("list=")[-1]
+                        except:
+                            pl_name = f"Playlist {i}"
+                        if get_user_input(f"    ¿Escanear playlist '{pl_name}'? (s/n):", 's') == 's':
                             self.targets.append({'name': name, 'url': pl_url, 'start': start_date, 'end': end_date})
 
-    def _adjudicate_targets(self):
-        """Fetches video info, filters by date, and creates missions."""
+    def _adjudicate_targets_from_channels(self):
+        """Fetches video info from multiple channels and creates a master list of missions."""
         print_header("Fase 2: Adjudicación de Objetivos (Recopilando Títulos)")
+        
+        master_video_list = []
         for target in self.targets:
             print(f"\nAdjudicando para: {target['name']} ({target['url']})")
             print(f"Rango de fechas: {target['start']} - {target['end']}")
 
+            # Validate dates to prevent errors
+            if not (target['start'] and target['end'] and target['start'].isdigit() and target['end'].isdigit()):
+                print("  -> ADVERTENCIA: Fechas inválidas o faltantes. Omitiendo este objetivo.")
+                continue
+
             yt_dlp_command = [
                 "yt-dlp",
-                "--batch-file", target['url'],
                 "--datebefore", target['end'],
-                "--break-match-filters", f"upload_date < {target['start']}",
+                "--break-match-filters", f"upload_date >= {target['start']}",
                 "--download-archive", str(YT_DLP_ARCHIVE),
                 "--print", "[%(id)s]--[%(upload_date)s]--[%(title)s]",
                 "--sleep-interval", str(YT_DLP_SLEEP_INTERVAL), "--max-sleep-interval", str(YT_DLP_MAX_SLEEP_INTERVAL),
@@ -278,7 +352,8 @@ class MissionControl:
                 "--skip-download",
                 "--match-filter", "availability ='public'",
                 "--extractor-args", "youtube:formats=missing_pot",
-                "--quiet", "--no-warnings"
+                "--quiet", "--no-warnings",
+                target['url']  # URL is now a positional argument
             ]
             
             output = run_command(yt_dlp_command, YT_DLP_TIMEOUT)
@@ -287,11 +362,18 @@ class MissionControl:
                     if '--' in line:
                         try:
                             video_id, upload_date, title = line.split('--', 2)
-                            self.missions.append(Mission(target['name'], target['url'], video_id, upload_date, title))
+                            # Strip the leading '[' and trailing ']' from each part
+                            video_id = video_id.strip('[]')
+                            upload_date = upload_date.strip('[]')
+                            title = title.strip('[]')
+                            mission = Mission(target['name'], target['url'], video_id, upload_date, title)
+                            master_video_list.append(mission)
                             print(f"  -> Encontrado: {upload_date} - {title}")
                         except ValueError:
                             print(f"  -> ADVERTENCIA: Línea mal formada, omitiendo: {line}")
                             continue
+        
+        self.missions = master_video_list
 
     def _process_missions(self):
         """Processes all queued video missions."""
