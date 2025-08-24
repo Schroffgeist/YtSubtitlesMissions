@@ -1,0 +1,44 @@
+Loaded cached credentials.
+**NEWS REPORT: August 1, 2025**
+
+**Opening:**
+Today, August 1, 2025, global markets are experiencing significant volatility following a series of economic and geopolitical developments. Key reports indicate a weakening U.S. labor market and persistent inflation, while new tariff implementations by the Trump administration are reshaping international trade relations. Geopolitical tensions, particularly involving the U.S., Russia, China, and the Middle East, continue to escalate, prompting shifts in alliances and strategic posturing.
+
+**Economic Indicators:**
+
+**U.S. Labor Market and Inflation:**
+The U.S. labor market shows signs of significant weakening. The Non-Farm Payrolls (NFP) data, released today, reported 73,000 new jobs, falling short of the 110,000 expectation. Revisions for May and June were substantial, with May's figure revised from 144,000 to 19,000, and June's from 147,000 to 14,000. This constitutes a downward revision of 258,000 jobs over two months, indicating a "jarring employment report" according to ARK Invest. Full-time jobs have seen a loss of 626,000 over the last three months, and the full-year figure is "deeply negative." The official unemployment rate stands at 4.1%, but a broader U6 measure, which includes discouraged workers and those working part-time for economic reasons, is nearly double this figure. The labor force participation rate continues to decline, reaching 62.2%, with 400,000 Americans leaving the workforce in the last five months. This suggests a "silent depression" framework, where real personal income purchasing power and labor force participation have been declining since the early 2000s.
+
+Inflation remains a concern. The core PCE (Personal Consumption Expenditures) index registered 2.8%, exceeding the 2.7% forecast and indicating persistent internal inflationary pressures. This contradicts earlier Federal Reserve statements, with Chairman Jay Powell having previously described the labor market as "solid." The Federal Reserve's decision to maintain interest rates, with two dissenting votes, suggests potential rate cuts in September, with probabilities for a 50 basis point cut increasing. The bond market is already pricing in rate cuts, with the two-year Treasury yield dropping 21 basis points today, reflecting expectations of a weakening economy.
+
+**Global Trade and Tariffs:**
+The Trump administration has implemented new tariffs, significantly impacting global trade. Tariffs on Canadian products have increased from 25% to 35%, effective today, August 1, 2025. Over 69 countries face new tariffs ranging from 10% to 50%, with Brazil potentially facing a 50% tariff for its stance within the BRICS bloc. Syria faces a 41% tariff, and Bosnia and Herzegovina, along with Algeria, face 30% tariffs. Afghanistan faces a 15% tariff. Washington also plans an additional 40% tariff on Canadian goods attempting to enter via third countries to evade new tariffs.
+
+Mexico has agreed to increase import taxes on small online purchases from Chinese retailers like Shein and Temu, raising them from 19% to 33.5%. This move is seen as a response to U.S. accusations that China is using Mexico to funnel goods into the U.S. market, and aims to favor North American products. This aligns with the U.S. strategy of pressuring countries to distance themselves from China.
+
+The U.S. has also imposed a 15% tariff on South Korean imports, including automobiles. South Korea has committed to investing $350 billion in U.S. assets and purchasing $100 billion in U.S. energy products. This agreement has led to a decline in the stock prices of South Korean automakers like Hyundai and Kia, as investors perceive the deal as unfavorable to their profitability.
+
+**Geopolitical Landscape:**
+
+**U.S.-Russia-China Dynamics:**
+The geopolitical landscape is characterized by a "global chessboard" with three major powers: the U.S., Russia, and China. According to analyst Alfredo Jalife, the Trump administration's actions, including tariffs and ultimatums, are part of a multi-dimensional geo-strategic war aimed at disrupting the Russia-China G2 alliance. Trump initially sought a G2 with Russia, but following the perceived defeat of the U.S., NATO, and the EU in Ukraine, he is now attempting to forge a G2 with China, potentially at India's expense, by favoring Pakistan.
+
+A verbal exchange between former Russian President Dmitry Medvedev and Donald Trump highlights the escalating tensions. Medvedev warned Trump against issuing threats and ultimatums, asserting Russia's right to pursue its own path. Scott Ritter, a former UN weapons inspector, suggests that Trump's aggressive rhetoric and actions, including threats of "decapitation strikes" against Moscow, are influenced by "Russophobe" advisors. Ritter warns of Russia's "Dead Hand" (Perimeter) system, a Cold War-era mechanism ensuring nuclear retaliation even if its leadership is incapacitated, serving as a deterrent against a preemptive strike.
+
+Despite Trump's attempts to create wedges, the Russia-China strategic partnership remains strong, evidenced by over 42 meetings between Putin and Xi Jinping. China's economic and technological advancements, particularly in critical technologies, position it as a leading global power. Russia's military capabilities, especially in hypersonic missiles, are also noted as superior to the U.S.
+
+**Middle East and Israel-Palestine Conflict:**
+International pressure is mounting on Israel regarding the ongoing conflict in Gaza. Canada, along with the UK, France, and Spain, has announced its intention to recognize a Palestinian state, citing the "unbearable suffering" caused by Israeli actions, including the obstruction of humanitarian aid and settler violence in the West Bank. This move is a direct challenge to Israel's stance and has drawn strong condemnation from the Trump administration, which views it as a reward for Hamas.
+
+Humanitarian conditions in Gaza are described as "desperate," with reports of 91 fatalities today, August 1, 2025, due to ongoing violence and aid blockades. International efforts to deliver aid, including Canadian airlifts, are underway, but face significant obstacles.
+
+**Argentina's Political and Economic Crisis:**
+Argentina is grappling with a severe political and economic crisis under President Javier Milei. His approval ratings are reportedly declining, with some sources indicating they are below 40%. Milei's economic policies, including high interest rates (up to 65%) and austerity measures, have led to increased unemployment, factory closures, and a significant drop in consumption. The Argentine peso has depreciated sharply against the U.S. dollar, reaching 1385 pesos per dollar, despite the dollar's global weakness.
+
+Milei faces internal political divisions, particularly with his Vice President, Victoria Villarruel, whom he has accused of "treason" for enabling a Senate session that approved pension increases, threatening his fiscal surplus. Critics, including former President Cristina Fernández, argue that Milei's policies are exacerbating the country's debt crisis and that his "chainsaw plan" has severely impacted the Argentine population. Milei's continued travel abroad, despite the economic hardship, has also drawn criticism.
+
+**Technological Developments:**
+In the realm of artificial intelligence, Anthropic, the developer of Claude Code, has announced weekly usage limits for its Cloud Pro and Max users, effective by the end of August. This decision comes after some users incurred "tens of thousands of dollars" in model usage on a $200/month plan, highlighting the high cost of running advanced AI models. This move is seen as a correction to an unsustainable pricing model, as the actual cost of AI inference is significantly higher than previously offered.
+
+**Closing:**
+The global landscape on August 1, 2025, is marked by economic uncertainty, escalating geopolitical tensions, and shifting alliances. The U.S. economy faces challenges from a weakening labor market and persistent inflation, while its aggressive tariff policies are reshaping international trade. Geopolitical rivalries, particularly between the U.S., Russia, and China, continue to intensify, with the Middle East remaining a critical flashpoint. Argentina's internal struggles underscore the fragility of economic and political stability. The developments in AI pricing models reflect the evolving economic realities of advanced technology. These interconnected events signal a period of continued global reordering and instability.

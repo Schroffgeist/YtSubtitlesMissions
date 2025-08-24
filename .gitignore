@@ -1,0 +1,14 @@
+# Ignore all UC directories and their contents, anywhere under subtitles/
+subtitles/**/UC*/
+
+# Ignore all dated AlfredoJalifeR - distilled_output directories and their contents
+subtitles/AlfredoJalifeR - distilled_output */
+
+# Ignore all dated Distilling Intel - distilled_output directories and their contents
+subtitles/Distilling Intel - */
+
+# Ignore other generated/temporary directories and their contents
+subtitles/All subtitles transcripts/
+subtitles/temp_subtitles/
+subtitles/deduplicated_vtt_quarantine/
+subtitles/La estrategia del Día - distilled_output/

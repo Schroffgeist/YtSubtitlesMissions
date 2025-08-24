@@ -1,0 +1,96 @@
+Data collection is disabled.
+**NEWS REPORT: GLOBAL ECONOMIC AND GEOPOLITICAL LANDSCAPE - AUGUST 21, 2025**
+
+**Opening**
+
+Good evening. Tonight, we bring you a comprehensive analysis of the global economic and geopolitical landscape, marked by significant shifts in trade policies, ongoing conflicts, and the relentless advance of artificial intelligence. Key developments include the impact of U.S. tariff policies on international markets, the evolving dynamics of the Russia-Ukraine conflict, and the rapid advancements in AI technology, particularly in agentic systems and text-to-speech models. We also delve into the political and social implications of these changes, from the rise of right-wing ideologies to the challenges faced by emerging economies.
+
+**Economic Indicators**
+
+**U.S. Economic Policy and Market Reactions**
+
+The U.S. economy is experiencing a period of significant uncertainty, primarily driven by trade policies and their impact on various sectors. According to ARK Invest on August 1, 2025, the July 2025 U.S. employment report was significantly weaker than anticipated, largely due to downward revisions of previous months' data. This has fueled recession fears, though ARK Invest suggests a "rolling recession" has been ongoing for the past three years, with a strong recovery expected by the next midterm elections.
+
+President Trump's administration continues to implement aggressive tariff policies. On August 1, 2025, new executive orders were signed, imposing reciprocal tariffs ranging from 10% to 41% on goods from 69 countries with which the U.S. has trade deficits. Notably, Mexico is exempt from these new tariffs. The highest tariff, 41%, is applied to Syria, while the European Union, Japan, and South Korea face a 15% tariff. South Korea's Minister of Commerce, however, denied any agreement to these tariffs, suggesting a potential misrepresentation by the U.S. administration. These tariffs are intended to protect U.S. workers, farmers, and manufacturers, and strengthen the industrial defense base. However, critics argue that these measures are more geopolitical tools than economic solutions, as they have not demonstrably generated significant wealth for the U.S. economy. The U.S. GDP has seen an increase, but this is attributed to reduced imports rather than a surge in domestic investment. Unemployment has also risen.
+
+The impact of these tariffs is evident in market volatility. On August 1, 2025, the S&P 500 fell by 1.77%, the Dow Jones by 1.39%, and the Nasdaq by 2.33%. The Russell 2000 also saw a 2% decline. Conversely, gold prices rose by $400 per ounce, and U.S. bonds saw increased demand, indicating a flight to safety among investors. This suggests that investors are moving away from high-risk assets due to the instability caused by Trump's policies.
+
+The Mexican peso has also experienced devaluation, reaching 18.94 pesos per U.S. dollar, a direct consequence of these U.S. trade policies. Remittances from the U.S. to Mexico have seen a significant decline, with a 16.2% year-on-year decrease in June 2025, and a 5.6% drop in the first half of 2025 compared to the previous year. This marks the worst semester for remittances since 2013, according to Banxico data. This decline is attributed to a weakening U.S. labor market and aggressive immigration policies, including the deportation of over 39,000 individuals by April 2025, as reported by Aarón Díaz.
+
+**Monetary Policy and Inflation**
+
+Federal Reserve Chairman Jerome Powell's aggressive stance on monetary policy has been noted. Despite signs of a weakening housing market and controlled inflation, Powell's statements suggest a continued restrictive approach. However, ARK Invest anticipates interest rate cuts, with an 88% probability of a rate cut in September and a 25% chance of a 50 basis point cut. This is driven by the weakening employment data and the need to stimulate economic activity.
+
+Inflation, as measured by the Consumer Price Index (CPI), is expected to stabilize and then decline below 2% by the end of the year, according to ARK Invest. This is partly due to the absorption of tariffs by corporate margins and currency depreciation in countries like China. The U.S. corporate tax cuts, bringing the effective rate to 12-14%, are also expected to attract capital and boost productivity.
+
+**Russian Economic Performance**
+
+Russia's economy, as analyzed by Infranomics on August 9, 2025, shows a low unemployment rate of 2.2%, approximately half that of the U.S. The country maintains a significant current account surplus, around 3% of its GDP, primarily driven by its trade surplus. This surplus helps offset a fiscal deficit of about 1.7% of GDP. In contrast, the U.S. faces a "twin deficit" with a current account deficit of 6% of GDP and a fiscal deficit of 7% of GDP.
+
+Energy exports constitute 60% of Russia's total exports. While lower oil prices impact revenue, the ruble's exchange rate also plays a crucial role. The ruble has weakened against the dollar since the early 2000s but has shown some strengthening in recent months. Russia's military spending is substantial, around $150 billion annually, representing 7% of its GDP, double that of the U.S.
+
+Despite sanctions, the ruble has remained relatively stable since 2021, depreciating only about 6% against the dollar. This suggests that the sanctions have not had the profound effect U.S. policymakers intended. Russia's real GDP growth is 1.4% year-on-year, with inflation at 9.4%. The cost of debt has risen above nominal growth, indicating a growing debt burden, though Russia's debt-to-GDP ratio remains low at 9.4% compared to the U.S.'s 125%.
+
+The Russian bond market shows a deeply inverted yield curve, suggesting investor concern about the government's solvency in the short term due to ongoing conflict. However, the bond market has recently "dis-inverted," with short-term rates falling faster than long-term rates, which Infranomics interprets as the market pricing in a higher probability of an end to hostilities.
+
+**Global Financial Risks**
+
+Eurodollar University, on August 11, 2025, highlights the hidden risks in Japan's economy that could trigger global financial instability. The Japanese carry trade, where Japanese financial institutions use yen as collateral to invest in higher-yielding dollar-denominated assets, is a significant factor. A reversal of this carry trade, driven by macroeconomic weakness, could lead to substantial volatility. While the immediate reaction to the July 2025 U.S. employment report was less severe than previous instances, Japanese institutions have been de-risking their portfolios since last year, learning from past overexposure to U.S. macroeconomic weakness. However, the potential for further disruption remains, especially if U.S. economic conditions worsen.
+
+**Geopolitics**
+
+**U.S. Foreign Policy and International Relations**
+
+U.S. foreign policy under President Trump is characterized by a complex interplay of aggressive posturing and behind-the-scenes negotiations. On July 17, 2025, Alfredo Jalife reported on a 50-day ultimatum issued by Trump to Russia regarding the conflict in Ukraine. This ultimatum, perceived as a theatrical move by Moscow, is set to expire just before a planned meeting between Russian President Vladimir Putin and Chinese President Xi Jinping in Tianjin, China. This timing, according to Pepe Escobar, is not coincidental and suggests a coordinated diplomatic maneuver.
+
+Despite Trump's public statements, there are indications of ongoing, discreet negotiations. Marco Rubio, a U.S. Senator, reportedly met with Wang Yi, a high-ranking Chinese official, in Malaysia, discussing a potential summit between Trump and Xi. This suggests a softening of Trump's stance towards China, while his rhetoric against Russia remains firm. This "pendulum" strategy aims to prevent a strong Russia-China alliance. However, China has publicly stated that it will not yield to U.S. tariff threats and will continue to support trade with Russia, viewing U.S. secondary sanctions as unilateral and illegal.
+
+The U.S. is also pushing Europe to increase its defense spending and purchase new weaponry from the U.S., while simultaneously urging European nations to provide older arms to Ukraine. This strategy, as noted by Alfredo Jalife, benefits the U.S. military-industrial complex.
+
+**Russia-Ukraine Conflict**
+
+The conflict in Ukraine continues to be a focal point of global attention. On July 10, 2025, Russia launched massive bombardments against Ukraine, destroying military airfields, in response to U.S. actions. Germany has been hesitant to supply long-range Taurus missiles to Ukraine, fearing Russian retaliation and acknowledging its limited military arsenal. Russia has warned that any source of attacks on its territory will be treated similarly to Ukraine.
+
+There is a growing sentiment that Ukraine's position is weakening, with calls for negotiations and a ceasefire. However, Russia, currently on the offensive, is unlikely to agree to terms that do not favor its gains. The potential defeat of Ukraine and NATO in the conflict is seen as having significant repercussions for the Western world.
+
+**Latin American Geopolitics**
+
+Mexico, under President Andrés Manuel López Obrador (AMLO), has pursued a foreign policy of non-intervention and sovereignty, contrasting sharply with previous administrations' alignment with U.S. interests. On July 2, 2025, La Base América Latina highlighted AMLO's seven years in power, emphasizing his focus on social programs, increased minimum wage, and a reduction in poverty. Mexico's economic stability, including a strong peso and increased foreign direct investment, challenges the neoliberal narrative that deregulation is necessary for investment.
+
+Mexico has also played a significant role in regional diplomacy, revitalizing the Community of Latin American and Caribbean States (CELAC) as a platform for Latin American and Caribbean nations without U.S. interference. AMLO has advocated for respect for national sovereignty and non-intervention, particularly regarding Venezuela, Nicaragua, and Cuba. Mexico has also maintained neutrality in the Russia-Ukraine conflict, refusing to impose sanctions on Russia or supply arms to Ukraine.
+
+Despite Mexico's efforts, the U.S. continues to exert pressure. On August 10, 2025, Jesús Escobar Tovar discussed the Mexico-U.S. agreement, which postponed the imposition of 30% tariffs on Mexican products for 90 days. This pause is seen as a period for the U.S. to pressure Mexico into abandoning policies that assert national sovereignty, particularly in energy, agriculture, and healthcare. The U.S. demands include easing restrictions on U.S. medicines, allowing genetically modified corn imports, and reversing the ban on glyphosate. The U.S. also seeks to open Mexico's oil and electricity sectors to foreign capital. These demands are viewed as an attempt to undermine Mexico's 4T project and restore traditional right-wing political influence.
+
+In Colombia, former President Álvaro Uribe Vélez was condemned by the Colombian Justice on July 29, 2025, as reported by La Base. This development signifies a shift in the political landscape of the region.
+
+**The Rise of Right-Wing Ideologies and Disinformation**
+
+Several analyses highlight the growing influence of right-wing ideologies and the spread of disinformation. On July 27, 2025, Jesús Escobar Tovar discussed the "International of Hate," where global ultraright groups coordinate narratives, particularly in Mexico. This involves the use of "straw man" fallacies and cynical rhetoric, as exemplified by Javier Milei's statements in Argentina.
+
+On August 8, 2025, Diego Ruzzarin, Santiago Armesilla, Guido Agostinelli, and Nahuel Michalski debated the "fallacies of Javier Milei." Milei's assertion that if people couldn't make ends meet, there would be "corpses in the streets" was criticized as a cynical fallacy. Data from Argentina indicates that 63-84% of the population struggles to meet household expenses, and the government's policies have exacerbated the decline in real wages and increased household debt. The discussion emphasized that the ultraright often employs manipulative language, presenting themselves as rational while appealing to emotions and using terms like "leftist" as a pejorative to dehumanize opponents.
+
+The use of "100 million deaths" as a symbolic argument against communism by figures like Alex Kaiser (Chilean equivalent of Agustín Laje) was also deconstructed. This figure, originating from "The Black Book of Communism," is considered highly inflated and includes deaths from various unrelated causes. Critics argue that such figures are used as "Pokémon cards" in symbolic exchanges to simplify complex historical events and demonize opposing ideologies.
+
+The debate also touched upon the "sadism" and "cruelty" inherent in some right-wing discourse, where the suffering of opponents is met with pleasure. This is seen as a dangerous trend that normalizes hate speech and extremist narratives, particularly through social media and cultural products.
+
+**Technology**
+
+**Artificial Intelligence Advancements**
+
+The field of Artificial Intelligence continues its rapid evolution, with new developments in agentic systems and text-to-speech technology. Carlos Rodera, on August 7, 2025, demonstrated the creation of an "AI agent builder" capable of developing specialized GPTs (Generative Pre-trained Transformers) for businesses. This system utilizes a master agent that orchestrates multiple sub-agents, each with specific expertise (e.g., software architecture, UI/UX design, database architecture, security auditing, technical documentation). This approach allows for the automated creation of highly customized GPTs, addressing the challenge of AI adoption by businesses that find advanced AI concepts complex.
+
+Rodera emphasized the shift from traditional prompting techniques to "agentic design," where the focus is on providing context to the AI and debugging its outputs. He also highlighted the importance of "MCPs" (Master Control Programs or similar tools) that allow AI agents to directly configure and interact with various software systems like Supabase (for databases), N8N (for automation), and Stripe (for payments). This enables automated experts to work for users, streamlining complex tasks.
+
+A new text-to-speech (TTS) model called "Kitten TTS Nano" by Kitten ML was introduced on August 6, 2025. This model, despite its small size (under 25 MB), offers high-quality, realistic voices and is optimized for CPU execution, making it accessible without the need for powerful GPUs. While it currently lacks strong emotional range, its speed and efficiency make it suitable for real-time voice synthesis and applications like audiobook creation.
+
+**Cybersecurity Concerns in JavaScript Ecosystem**
+
+On August 1, 2025, midudev reported a significant supply chain attack on the JavaScript ecosystem. Malicious packages, including "Slim Confum Pretier" and "Sling Plugin Pretier," with millions of weekly downloads, were compromised. The attackers gained access through a phishing campaign targeting GitHub users. The malware, which persisted even after dependency removal, was capable of stealing system information, executing remote code, and maintaining persistence. This incident highlights vulnerabilities in package managers like npm, which execute scripts automatically upon installation, and the need for improved security measures like Google's "OSS Rebuild" initiative, which aims to semantically compare code before publication to prevent such attacks.
+
+**Roblox and Online Platforms**
+
+The online gaming platform Roblox is facing significant issues, described as a "brutal drama" by midulive on August 18, 2025. While specific details were not provided, this suggests ongoing challenges within the platform's ecosystem.
+
+**Closing**
+
+The global landscape in August 2025 is characterized by economic volatility driven by protectionist trade policies, particularly from the U.S., and the ongoing geopolitical realignments in Eastern Europe and Latin America. The rapid advancements in artificial intelligence offer transformative potential for businesses and individuals, yet also introduce new cybersecurity challenges. The political discourse is increasingly polarized, with right-wing ideologies employing sophisticated disinformation tactics. As these forces continue to interact, the coming months are expected to bring further shifts in international relations, economic stability, and technological integration.
