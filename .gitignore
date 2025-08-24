@@ -12,3 +12,6 @@ subtitles/All subtitles transcripts/
 subtitles/temp_subtitles/
 subtitles/deduplicated_vtt_quarantine/
 subtitles/La estrategia del Día - distilled_output/
+
+# Ignore the .git (Copy) backup directory
+/.git (Copy)/
